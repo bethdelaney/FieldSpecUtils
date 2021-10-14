@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-reqs = ['os', 'numpy', 'pandas', 'pathlib']
+reqs = ['numpy', 'pandas', 'pathlib']
 
 setup(
         name                  = "FieldSpecUtils",
