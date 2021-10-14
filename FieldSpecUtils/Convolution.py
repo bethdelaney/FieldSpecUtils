@@ -1,5 +1,9 @@
 """Functions to convolve hyperspectral data to the equivalent bands of a selection of common satellite based sensors"""
 
+import os
+import numpy as np
+import pandas as pd
+
 def S2(spectra):
     """Sentinel-2 convolution""" 
     os.chdir(bands_Dir)
