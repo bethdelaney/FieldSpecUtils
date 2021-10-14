@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import numpy as np
 import pandas as pd
+import shutil
 
 def S2(spectra, Bands):
     """Sentinel-2 convolution""" 
@@ -50,3 +51,6 @@ def S2(spectra, Bands):
 
     os.chdir(Home_Dir)
     collated_convolved.to_csv('Plots_with_convolved_bands.csv')
+    
+    shutil.rmtree(bands_Dir)
+    shutil.rmtree(convolved_Dir)
