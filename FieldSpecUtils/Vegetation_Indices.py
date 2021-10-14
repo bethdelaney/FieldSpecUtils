@@ -25,3 +25,4 @@ def AVRI(spectra):
 def MCARI(spectra):
     """Modified Chlorophyll Absorption Ratio Index"""
     mcari = = ((spectra.iloc[350,] - spectra.iloc[320,]) - (0.2*(spectra.iloc[350,] - spectra.iloc[200,]))) * (spectra.iloc[350,] / spectra.iloc[320,])
+    return mcari
