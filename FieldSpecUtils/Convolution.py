@@ -1,7 +1,7 @@
 """Functions to convolve hyperspectral data to the equivalent bands of a selection of common satellite based sensors"""
+
 def S2(spectra):
-      """Sentinel-2 convolution"""
-      
+    """Sentinel-2 convolution""" 
     os.chdir(bands_Dir)
     for column in spectra:
         f = Bands.mul(spectra[column],axis = 0)
