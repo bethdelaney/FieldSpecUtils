@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-def S2(spectra):
+def S2(spectra, Bands):
     """Sentinel-2 convolution""" 
     cwd = Path.cwd()
     Home_Dir = cwd
