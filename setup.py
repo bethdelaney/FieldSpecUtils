@@ -5,7 +5,7 @@ setup(
         name                  = "FieldSpecUtils",
         packages              = find_packages(),
         install_requires      = reqs,
-        version               = "1.0.11",
+        version               = "1.0.12",
         author                = "NERC Field Spectroscopy Facility",
         author_email          = "fsf@ed.ac.uk",
         description           = ("A software package for reading and processing data from Microtops II sun photometers, based on the package PyMicrotops by Robin Wilson"),
