@@ -1,9 +1,9 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 reqs = ['os', 'numpy', 'pandas', 'pathlib']
 
 setup(
         name                  = "FieldSpecUtils",
-        packages              = ['FieldSpectils'],
+        packages              = find_packages()
         install_requires      = reqs,
         version               = "1.0.0",
         author                = "NERC Field Spectroscopy Facility",
