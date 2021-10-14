@@ -1,7 +1,7 @@
 """Functions to convolve hyperspectral data to the equivalent bands of a selection of common satellite based sensors"""
 
 import os
-import Path
+from pathlib import Path
 import numpy as np
 import pandas as pd
 
