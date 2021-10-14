@@ -10,7 +10,9 @@ def S2(spectra, Bands):
     cwd = Path.cwd()
     Home_Dir = cwd
     bands_Dir = str(cwd / "bands") 
+    convolved_Dir = str(cwd / "convolved")
     os.mkdir(bands_Dir)
+    os.mkdir(convolved_Dir)
     
     os.chdir(bands_Dir)
     for column in spectra:
