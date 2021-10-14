@@ -3,7 +3,7 @@ reqs = ['os', 'numpy', 'pandas', 'pathlib']
 
 setup(
         name                  = "FieldSpecUtils",
-        packages              = find_packages()
+        packages              = find_packages(),
         install_requires      = reqs,
         version               = "1.0.0",
         author                = "NERC Field Spectroscopy Facility",
