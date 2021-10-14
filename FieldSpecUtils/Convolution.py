@@ -1,12 +1,7 @@
-def S2(spectra):
-    Bands = pd.read_csv("Sentinel 2 Bands.csv", index_col=0, header=0)
-    
-    os.chdir(csv_Dir)
-    for column in spectra.columns:
-        spectra[column].to_csv(column + '.csv')
-        
+def S2(spectra):    #Sentinel-2 convolution#       
+      
     os.chdir(bands_Dir)
-    for column in Species_means:
+    for column in spectra:
         f = Bands.mul(spectra[column],axis = 0)
         f.to_csv('Bands_' + column + '.csv')
         
