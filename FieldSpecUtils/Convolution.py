@@ -7,6 +7,7 @@ import pandas as pd
 
 def S2(spectra):
     """Sentinel-2 convolution""" 
+    cwd = Path.cwd()
     Home_Dir = cwd
     bands_Dir = str(cwd / "bands") 
     os.mkdir(bands_Dir)
