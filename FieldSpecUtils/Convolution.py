@@ -20,7 +20,7 @@ def S2(spectra, Bands):
         f.to_csv('Bands_' + column + '.csv')
         
     for band_file in os.scandir(bands_Dir):
-        file_name = pathlib.Path(band_file).stem
+        file_name = Path(band_file).stem
         convolution_process = pd.read_csv(band_file, index_col=0, header=0)
         Band_2 = (np.trapz((convolution_process.iloc[89:184, 1]), axis = 0)) / (np.trapz((Bands.iloc[89:184, 1]), axis = 0))
         Band_3 = (np.trapz((convolution_process.iloc[188:233, 2]), axis = 0)) / (np.trapz((Bands.iloc[188:233, 2])))
