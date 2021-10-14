@@ -1,11 +1,16 @@
 """Functions to convolve hyperspectral data to the equivalent bands of a selection of common satellite based sensors"""
 
 import os
+import Path
 import numpy as np
 import pandas as pd
 
 def S2(spectra):
     """Sentinel-2 convolution""" 
+    Home_Dir = cwd
+    bands_Dir = str(cwd / "bands") 
+    os.mkdir(bands_Dir)
+    
     os.chdir(bands_Dir)
     for column in spectra:
         f = Bands.mul(spectra[column],axis = 0)
