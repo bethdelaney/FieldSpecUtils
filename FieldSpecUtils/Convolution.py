@@ -74,9 +74,6 @@ def S2(spectra, Bands):
     shutil.rmtree(bands_Dir)
     shutil.rmtree(convolved_Dir)
 
-
-
-
 def ASTER(spectra, Bands):
     """WorldView3 ASTER convolution Band 1 -- Band 9""" 
     cwd = Path.cwd()
