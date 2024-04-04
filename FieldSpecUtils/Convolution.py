@@ -140,3 +140,127 @@ def ASTER(spectra, Bands):
     
     shutil.rmtree(bands_Dir)
     shutil.rmtree(convolved_Dir)
+
+def Dove(spectra, Bands):
+    """Dove convolution""" 
+    cwd = Path.cwd()
+    Home_Dir = cwd
+    bands_Dir = str(cwd / "bands") 
+    convolved_Dir = str(cwd / "convolved")
+    if (Path(bands_Dir)).exists() and (Path(bands_Dir)).is_dir():
+        shutil.rmtree(Path(bands_Dir))
+        os.mkdir(bands_Dir)
+    else:
+        os.mkdir(bands_Dir)
+    if (Path(convolved_Dir)).exists() and (Path(convolved_Dir)).is_dir():
+        shutil.rmtree(Path(convolved_Dir))
+        os.mkdir(convolved_Dir)
+    else:
+        os.mkdir(convolved_Dir)
+        
+    while True:
+        water_bands_removed = input("Are there regions where water bands have been removed in your data (Y or N)?: ")
+        if water_bands_removed == "Y":
+            np.seterr(divide="ignore")
+            break
+        elif water_bands_removed == "N":
+            break
+        else:
+            print("Input a valid option (Y or N)")
+            continue
+    
+    os.chdir(bands_Dir)
+    for column in spectra:
+        f = Bands.mul(spectra[column],axis = 0)
+        f.to_csv('Bands_' + column + '.csv')
+        
+    for band_file in os.scandir(bands_Dir):
+        file_name = Path(band_file).stem
+        convolution_process = pd.read_csv(band_file, index_col=0, header=0)
+        Blue = (np.trapz((convolution_process.iloc[91:650, 0]), axis = 0)) / (np.trapz((Bands.iloc[91:650, 0]), axis = 0))
+        Green = (np.trapz((convolution_process.iloc[180:250, 1]), axis = 0)) / (np.trapz((Bands.iloc[180:250, 1]), axis = 0))
+        Red = (np.trapz((convolution_process.iloc[284:595, 2]), axis = 0)) / (np.trapz((Bands.iloc[284:595, 2]), axis = 0))
+        NIR = (np.trapz((convolution_process.iloc[490:544, 3]), axis = 0)) / (np.trapz((Bands.iloc[490:544, 3]), axis = 0))
+        convolved = {'Band name': ["Blue", "Green", "Red", "NIR"],
+                         file_name+'SRF': [Blue, Green, Red, NIR]}
+        convolved_product = pd.DataFrame(convolved)
+        convolved_product.set_index('Band name', inplace = True)
+        os.chdir(convolved_Dir)
+        convolved_product.to_csv('convolved_' + file_name + '.csv') 
+    
+    collated_list = []
+    for convolved_file in os.scandir(convolved_Dir):
+        df = pd.read_csv(convolved_file, index_col=0, header=0)
+        collated_list.append(df)
+
+    collated_convolved = pd.concat(collated_list, axis=1)
+
+    os.chdir(Home_Dir)
+    collated_convolved.to_csv('Dove_Convolved.csv')
+    
+    shutil.rmtree(bands_Dir)
+    shutil.rmtree(convolved_Dir)
+
+def SuperDove(spectra, Bands):
+    """Dove convolution""" 
+    cwd = Path.cwd()
+    Home_Dir = cwd
+    bands_Dir = str(cwd / "bands") 
+    convolved_Dir = str(cwd / "convolved")
+    if (Path(bands_Dir)).exists() and (Path(bands_Dir)).is_dir():
+        shutil.rmtree(Path(bands_Dir))
+        os.mkdir(bands_Dir)
+    else:
+        os.mkdir(bands_Dir)
+    if (Path(convolved_Dir)).exists() and (Path(convolved_Dir)).is_dir():
+        shutil.rmtree(Path(convolved_Dir))
+        os.mkdir(convolved_Dir)
+    else:
+        os.mkdir(convolved_Dir)
+        
+    while True:
+        water_bands_removed = input("Are there regions where water bands have been removed in your data (Y or N)?: ")
+        if water_bands_removed == "Y":
+            np.seterr(divide="ignore")
+            break
+        elif water_bands_removed == "N":
+            break
+        else:
+            print("Input a valid option (Y or N)")
+            continue
+    
+    os.chdir(bands_Dir)
+    for column in spectra:
+        f = Bands.mul(spectra[column],axis = 0)
+        f.to_csv('Bands_' + column + '.csv')
+        
+    for band_file in os.scandir(bands_Dir):
+        file_name = Path(band_file).stem
+        convolution_process = pd.read_csv(band_file, index_col=0, header=0)
+        CoastalBlue = (np.trapz((convolution_process.iloc[77:110, 0]), axis = 0)) / (np.trapz((Bands.iloc[77:110, 0]), axis = 0))
+        Blue = (np.trapz((convolution_process.iloc[91:650, 1]), axis = 0)) / (np.trapz((Bands.iloc[91:650, 1]), axis = 0))
+        GreenI = (np.trapz((convolution_process.iloc[157:208, 2]), axis = 0)) / (np.trapz((Bands.iloc[157:208, 2]), axis = 0))
+        GreenII = (np.trapz((convolution_process.iloc[180:250, 3]), axis = 0)) / (np.trapz((Bands.iloc[180:250, 3]), axis = 0))
+        Yellow = (np.trapz((convolution_process.iloc[243:284, 4]), axis = 0)) / (np.trapz((Bands.iloc[243:284, 4]), axis = 0))
+        Red = (np.trapz((convolution_process.iloc[284:595, 5]), axis = 0)) / (np.trapz((Bands.iloc[284:595, 5]), axis = 0))
+        RedEdge = (np.trapz((convolution_process.iloc[342:373, 6]), axis = 0)) / (np.trapz((Bands.iloc[342:373, 6]), axis = 0))
+        NIR = (np.trapz((convolution_process.iloc[490:544, 7]), axis = 0)) / (np.trapz((Bands.iloc[490:544, 7]), axis = 0))
+        convolved = {'Band name': ["Coastal Blue", "Blue", "Green-I", "Green-II", "Yellow", "Red", "Red Edge", "NIR"],
+                         file_name+'SRF': [CoastalBlue, Blue, GreenI, GreenII, Yellow, Red, RedEdge, NIR]}
+        convolved_product = pd.DataFrame(convolved)
+        convolved_product.set_index('Band name', inplace = True)
+        os.chdir(convolved_Dir)
+        convolved_product.to_csv('convolved_' + file_name + '.csv') 
+    
+    collated_list = []
+    for convolved_file in os.scandir(convolved_Dir):
+        df = pd.read_csv(convolved_file, index_col=0, header=0)
+        collated_list.append(df)
+
+    collated_convolved = pd.concat(collated_list, axis=1)
+
+    os.chdir(Home_Dir)
+    collated_convolved.to_csv('Superdove_Convolved.csv')
+    
+    shutil.rmtree(bands_Dir)
+    shutil.rmtree(convolved_Dir)
