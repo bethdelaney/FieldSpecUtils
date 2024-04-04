@@ -5,10 +5,10 @@ setup(
         name                  = "FieldSpecUtils",
         packages              = find_packages(),
         install_requires      = reqs,
-        version               = "1.0.13",
+        version               = "1.0.2",
         author                = "NERC Field Spectroscopy Facility",
         author_email          = "fsf@ed.ac.uk",
-        description           = ("A software package for reading and processing data from Microtops II sun photometers, based on the package PyMicrotops by Robin Wilson"),
+        description           = ("A software package forconducting calculations of various remote sensing indices from hyperspectral data, and convolution processes to transform hyperspectral data to various satellite platform outputs. "),
         license               = "MIT",
         url                   = "https://github.com/NERC-FSF/FieldSpectraUtils",
         classifiers           =[
