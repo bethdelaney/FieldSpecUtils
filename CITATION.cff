@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+authors:
+  - family-names: Ramsay
+    given-names: Robbie
+    orcid: https://orcid.org/0000-0002-3121-2562
+title: "NERC Field Spectroscopy Facility FieldSpecUtils Pacakge"
+version: 1.0.1
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.10723142
+date-released: 2024-04-04
