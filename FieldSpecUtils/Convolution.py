@@ -19,6 +19,7 @@ def S2(spectra, Bands):
     cwd = Path.cwd()
     bands_Dir = cwd / "bands"
     convolved_Dir = cwd / "convolved"
+    file_name = file_name
 
     # Create or clear the bands directory
     if bands_Dir.exists():
@@ -86,7 +87,7 @@ def S2(spectra, Bands):
     collated_convolved = pd.concat(collated_list, axis=1)
 
     # Save the collated results
-    collated_convolved.to_csv(cwd / 'Plots_with_convolved_bands.csv')
+    collated_convolved.to_csv(cwd / f'{file_name}_convolved_bands.csv')
 
     # Optionally clear the directories (not delete)
     clear_directory(bands_Dir)
