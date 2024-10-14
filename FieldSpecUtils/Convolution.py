@@ -42,16 +42,16 @@ def S2(spectra, Bands):
     for band_file in os.scandir(bands_Dir):
         file_name = Path(band_file).stem
         convolution_process = pd.read_csv(band_file, index_col=0, header=0)
-        Band_2 = (np.trapezoid((convolution_process.iloc[89:184, 1]), axis = 0)) / (np.trapezoid((Bands.iloc[89:184, 1]), axis = 0))
-        Band_3 = (np.trapezoid((convolution_process.iloc[188:233, 2]), axis = 0)) / (np.trapezoid((Bands.iloc[188:233, 2])))
-        Band_4 = (np.trapezoid((convolution_process.iloc[296:344, 3]), axis = 0)) / (np.trapezoid((Bands.iloc[296:344, 3]), axis = 0))
-        Band_5 = (np.trapezoid((convolution_process.iloc[345:364, 4]), axis = 0)) / (np.trapezoid((Bands.iloc[345:364, 4]), axis = 0))
-        Band_6 = (np.trapezoid((convolution_process.iloc[381:399, 5]), axis = 0)) / (np.trapezoid((Bands.iloc[381:399, 5]), axis = 0))
-        Band_7 = (np.trapezoid((convolution_process.iloc[419:447, 6]), axis = 0)) / (np.trapezoid((Bands.iloc[419:447, 6]), axis = 0))
-        Band_8 = (np.trapezoid((convolution_process.iloc[423:557, 7]), axis = 0)) / (np.trapezoid((Bands.iloc[423:557, 7]), axis = 0))
-        Band_8a = (np.trapezoid((convolution_process.iloc[497:531, 8]), axis = 0)) / (np.trapezoid((Bands.iloc[497:531, 8]), axis = 0))
-        Band_11 = (np.trapezoid((convolution_process.iloc[1189:1332, 11]), axis = 0)) / (np.trapezoid((Bands.iloc[1189:1332, 11]), axis = 0))
-        Band_12 = (np.trapezoid((convolution_process.iloc[1728:1970, 12]), axis = 0)) / (np.trapezoid((Bands.iloc[1728:1970, 12]), axis = 0))
+        Band_2 = (np.trapz((convolution_process.iloc[89:184, 1]), axis = 0)) / (np.trapz((Bands.iloc[89:184, 1]), axis = 0))
+        Band_3 = (np.trapz((convolution_process.iloc[188:233, 2]), axis = 0)) / (np.trapz((Bands.iloc[188:233, 2])))
+        Band_4 = (np.trapz((convolution_process.iloc[296:344, 3]), axis = 0)) / (np.trapz((Bands.iloc[296:344, 3]), axis = 0))
+        Band_5 = (np.trapz((convolution_process.iloc[345:364, 4]), axis = 0)) / (np.trapz((Bands.iloc[345:364, 4]), axis = 0))
+        Band_6 = (np.trapz((convolution_process.iloc[381:399, 5]), axis = 0)) / (np.trapz((Bands.iloc[381:399, 5]), axis = 0))
+        Band_7 = (np.trapz((convolution_process.iloc[419:447, 6]), axis = 0)) / (np.trapz((Bands.iloc[419:447, 6]), axis = 0))
+        Band_8 = (np.trapz((convolution_process.iloc[423:557, 7]), axis = 0)) / (np.trapz((Bands.iloc[423:557, 7]), axis = 0))
+        Band_8a = (np.trapz((convolution_process.iloc[497:531, 8]), axis = 0)) / (np.trapz((Bands.iloc[497:531, 8]), axis = 0))
+        Band_11 = (np.trapz((convolution_process.iloc[1189:1332, 11]), axis = 0)) / (np.trapz((Bands.iloc[1189:1332, 11]), axis = 0))
+        Band_12 = (np.trapz((convolution_process.iloc[1728:1970, 12]), axis = 0)) / (np.trapz((Bands.iloc[1728:1970, 12]), axis = 0))
         convolved = {'Band name and centre wavelength (nm)': ["Band 2 - 490", "Band 3 - 560", "Band 4 - 665", "Band 5 - 705",
                                    "Band 6 - 740","Band 7 - 783", "Band 8 - 842", "Band 8a - 865",
                                    "Band 11 - 1610", "Band 12 - 2190"],
